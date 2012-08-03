@@ -1,0 +1,14 @@
+parameters:
+  socloz_state.state.class: Socloz\StateBundle\Services\State
+  socloz_state.feature.class: Socloz\StateBundle\Services\Feature
+  socloz_state.lock_manager.class: Socloz\StateBundle\Services\LockManager
+  socloz_state.storage.redis.class: Socloz\StateBundle\Storage\Redis
+  
+services:
+  socloz_state.storage.redis:
+    class: %socloz_state.storage.redis.class%
+    arguments: [ %socloz_state.storage.redis.host%, %socloz_state.storage.redis.port% ]
+
+  socloz_state.lock_manager:
+    class: %socloz_state.lock_manager.class%
+    arguments: [ @socloz_state.storage.redis, %socloz_state.storage.prefix% ]
