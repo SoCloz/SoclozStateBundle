@@ -25,6 +25,10 @@ class Redis implements StorageInterface
     {
         $multi = $this->redis->multi()
                 ->setnx($key, $value);
+        // memory full ?
+        if ($multi == null) {
+            return null;
+        }
         if ($ttl) {
             $multi->expire($key, $ttl);
         }
