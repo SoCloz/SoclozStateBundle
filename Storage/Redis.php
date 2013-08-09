@@ -23,12 +23,13 @@ class Redis implements StorageInterface
     }
     public function getOrCreate($key, $value, $ttl = null)
     {
-        $multi = $this->redis->multi()
-                ->setnx($key, $value);
+        $multi = $this->redis->multi();
         // memory full ?
         if ($multi == null) {
             return null;
         }
+        $multi->setnx($key, $value);
+
         if ($ttl) {
             $multi->expire($key, $ttl);
         }
