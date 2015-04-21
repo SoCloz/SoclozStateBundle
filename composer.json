@@ -1,0 +1,13 @@
+{
+  "name": "socloz/state-bundle",
+  "type": "symfony-bundle",
+  "license": "MIT",
+  "description": "A Symfony2 bundle to manage state, configuration, locks and features flags",
+  "require": {
+    "php": ">=5.3"
+  },
+  "autoload": {
+    "psr-0": { "Socloz\\StateBundle": "" }
+  },
+  "target-dir": "Socloz/StateBundle"
+}
